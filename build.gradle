@@ -54,8 +54,9 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            artifactId 'StylePlusPlus'
             // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
+            artifact(jar) {
                 builtBy remapJar
             }
             artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar"){
