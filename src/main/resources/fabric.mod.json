@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "stylesplusplus",
+  "version": "${version}",
+  "name": "StylesPlusPlus",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/stylesplusplus/icon.png",
+  "environment": "*",
+  "entrypoints": {"client": [
+    "tfc.stylesplusplus.client.StylesPlusPlusClient"
+  ], "main": ["tfc.stylesplusplus.StylesPlusPlus"]},
+  "mixins": [
+	"stylesplusplus.mixins.json"
+  ],
+  "depends": {
+	"fabricloader": ">=0.11.7",
+	"fabric": "*",
+	"minecraft": "1.17.1"
+  }
+}

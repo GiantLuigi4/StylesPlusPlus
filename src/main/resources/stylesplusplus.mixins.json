@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "tfc.stylesplusplus.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "SerializerMixin",
+    "StyleMixin"
+  ],
+  "client": [
+    "TextDrawerMixin",
+    "TextVisitFactoryMixin",
+    "MinecraftMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
