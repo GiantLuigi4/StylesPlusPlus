@@ -1,3 +1,4 @@
+# https://www.spigotmc.org/threads/jitpack-not-providing-build-for-java-16-plugin.514472/?__cf_chl_jschl_tk__=pmd_UBpNrJFrP4vpqyalpSm0GY8zX5VCQ9zFPoiCfN00R6U-1633215722-0-gqNtZGzNAiWjcnBszQYl
 before_install:
   - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
     - source ./install-jdk.sh --feature 16 --license GPL
