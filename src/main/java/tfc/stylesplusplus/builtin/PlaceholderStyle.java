@@ -11,16 +11,11 @@ public class PlaceholderStyle extends ExtraStyle {
 		super(new Identifier("stylesplusplus:placeholder"));
 	}
 	
-	@Override
-	public void apply(int index, int count, char c, Matrix4f stack, String str, Style fullStyle) {
-	}
-	
-	@Override
-	public int modifyWidth(int currentWidth, int index, int count, char c, String str, Style fullStyle) {
-		return currentWidth;
-	}
-	
 	JsonObject held = new JsonObject();
+	
+	@Override
+	public void apply(int index, int count, char c, Matrix4f matrix, String str, Style fullStyle) {
+	}
 	
 	@Override
 	public JsonObject serialize() {

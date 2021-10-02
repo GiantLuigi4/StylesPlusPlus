@@ -13,9 +13,11 @@ public abstract class ExtraStyle {
 		this.name = name;
 	}
 	
-	public abstract void apply(int index, int count, char c, Matrix4f stack, String str, Style fullStyle);
+	public abstract void apply(int index, int count, char c, Matrix4f matrix, String str, Style fullStyle);
 	
-	public abstract int modifyWidth(int currentWidth, int index, int count, char c, String str, Style fullStyle);
+	public int modifyWidth(int currentWidth, int index, int count, char c, String str, Style fullStyle) {
+		return currentWidth;
+	}
 	
 	public JsonObject serialize() {
 		JsonObject object = new JsonObject();

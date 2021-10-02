@@ -28,6 +28,7 @@ public class WavyStyle extends ExtraStyle {
 	
 	public WavyStyle(double sclX, double sclY, double speedX, double speedY, double offX, double offY, double indexMultiplierX, double indexMultiplierY) {
 		super(new Identifier("stylesplusplus:wavy"));
+		tickStart = GeneralUtils.getTime();
 		this.sclX = sclX;
 		this.sclY = sclY;
 		this.speedX = speedX;
@@ -106,18 +107,13 @@ public class WavyStyle extends ExtraStyle {
 	}
 	
 	@Override
-	public void apply(int index, int count, char c, Matrix4f stack, String str, Style fullStyle) {
+	public void apply(int index, int count, char c, Matrix4f matrix, String str, Style fullStyle) {
 		int tick = GeneralUtils.getTime() - (globalTime ? 0 : tickStart);
-		stack.multiply(Matrix4f.translate(
+		matrix.multiply(Matrix4f.translate(
 				(float) (Math.cos(Math.toRadians((tick * speedX) + (index * indexMultiplierX) + offX)) * sclX),
 				(float) (Math.cos(Math.toRadians((tick * speedY) + (index * indexMultiplierY) + offY)) * sclY),
 				0
 		));
-	}
-	
-	@Override
-	public int modifyWidth(int currentWidth, int index, int count, char c, String str, Style fullStyle) {
-		return currentWidth;
 	}
 	
 	public Color modifyColor(Color color, int index, int count, char c, String str, Style fullStyle, float brightnessMultiplier) {
