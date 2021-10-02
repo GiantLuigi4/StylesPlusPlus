@@ -20,7 +20,7 @@ import java.util.function.BooleanSupplier;
 public abstract class WorldMixin {
 	@Shadow @Final private List<AbstractClientPlayerEntity> players;
 	
-	//	@Inject(at = @At("HEAD"), method = "onSpawn()V")
+//	@Inject(at = @At("HEAD"), method = "onSpawn()V")
 //	public void preAdd(CallbackInfo ci) {
 //		Style style = Style.EMPTY;
 //		((ExtraStyleData) style).addStyle(new TestStyle());
@@ -29,7 +29,8 @@ public abstract class WorldMixin {
 	@Inject(at = @At("HEAD"), method = "tick")
 	public void onTick(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
 		Style style = Style.EMPTY.withBold(false);
-		((ExtraStyleData) style).addStyle(new WavyStyle());
+		WavyStyle wavyStyle = new WavyStyle(1, 1, 3, 1, 0, 0.5, 0, 0);
+		((ExtraStyleData) style).addStyle(wavyStyle);
 		for (AbstractClientPlayerEntity player : players) {
 			player.sendMessage(new LiteralText("aaaaaaaaaaaaaaaaaaaa").setStyle(style), true);
 		}
