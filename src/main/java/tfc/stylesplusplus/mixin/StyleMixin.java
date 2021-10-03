@@ -6,18 +6,20 @@ import net.minecraft.text.Style;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfc.stylesplusplus.api.ExtraStyle;
 import tfc.stylesplusplus.api.ExtraStyleData;
+import tfc.stylesplusplus.api.StyleColorSettingHack;
 
 import java.util.ArrayList;
 
 @Mixin(Style.class)
-public class StyleMixin implements ExtraStyleData {
+public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
+	@Shadow @Final @Nullable @Mutable private TextColor color;
 	@Unique
 	private final ArrayList<ExtraStyle> styles = new ArrayList<>();
 	
@@ -105,5 +107,10 @@ public class StyleMixin implements ExtraStyleData {
 					((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 			}
 		}
+	}
+	
+	@Override
+	public void setColor(@Nullable TextColor color) {
+		this.color = color;
 	}
 }

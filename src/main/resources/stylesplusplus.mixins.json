@@ -4,13 +4,13 @@
   "package": "tfc.stylesplusplus.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "SerializerMixin",
-    "StyleMixin"
+    "SerializerMixin"
   ],
   "client": [
     "TextDrawerMixin",
     "TextVisitFactoryMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "StyleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
