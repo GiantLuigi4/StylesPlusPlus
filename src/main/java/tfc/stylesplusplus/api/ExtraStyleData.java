@@ -10,4 +10,6 @@ public interface ExtraStyleData {
 	boolean skipParent();
 	
 	void clear();
+	
+	void setHasReset(boolean hasReset);
 }
