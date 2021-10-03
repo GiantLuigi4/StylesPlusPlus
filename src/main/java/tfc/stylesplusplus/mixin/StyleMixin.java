@@ -35,11 +35,13 @@ public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 	
 	@Inject(at = @At("RETURN"), method = "withFormatting(Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;")
 	public void copyFormatting(Formatting formatting, CallbackInfoReturnable<Style> cir) {
+		if (formatting != Formatting.RESET)
 		for (ExtraStyle style : styles) ((ExtraStyleData)cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withFormatting([Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;")
 	public void copyFormatting(Formatting[] formattings, CallbackInfoReturnable<Style> cir) {
+		for (Formatting formatting : formattings) if (formatting == Formatting.RESET) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData)cir.getReturnValue()).addStyle(style.copy());
 	}
 	
