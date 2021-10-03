@@ -18,12 +18,17 @@ import tfc.stylesplusplus.api.StyleColorSettingHack;
 import java.util.ArrayList;
 
 @Mixin(Style.class)
-public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
+public abstract class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 	@Shadow
 	@Final
 	@Nullable
 	@Mutable
 	private TextColor color;
+	
+	@Shadow public abstract Style withBold(@Nullable Boolean bold);
+	
+	@Shadow public abstract boolean isBold();
+	
 	@Unique
 	private final ArrayList<ExtraStyle> styles = new ArrayList<>();
 	
@@ -147,8 +152,9 @@ public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 //		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
-	@Inject(at = @At("RETURN"), method = "withParent")
+	@Inject(at = @At("RETURN"), method = "withParent", cancellable = true)
 	public void copyFormattingParent(Style parent, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) cir.setReturnValue(this.withBold(this.isBold()));
 		if (((ExtraStyleData)cir.getReturnValue()).skipParent() || hasReset) {
 			((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
 //			((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
