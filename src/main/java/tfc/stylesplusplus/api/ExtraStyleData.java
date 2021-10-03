@@ -8,4 +8,6 @@ public interface ExtraStyleData {
 	
 	void setSkipParent(boolean value);
 	boolean skipParent();
+	
+	void clear();
 }

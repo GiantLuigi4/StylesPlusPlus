@@ -41,11 +41,17 @@ public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 	public void copyFormatting(Formatting formatting, CallbackInfoReturnable<Style> cir) {
 		if (formatting != Formatting.RESET)
 			for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
+		else ((ExtraStyleData)cir.getReturnValue()).clear();
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withFormatting([Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;")
 	public void copyFormatting(Formatting[] formattings, CallbackInfoReturnable<Style> cir) {
-		for (Formatting formatting : formattings) if (formatting == Formatting.RESET) return;
+		for (Formatting formatting : formattings) {
+			if (formatting == Formatting.RESET) {
+				((ExtraStyleData)cir.getReturnValue()).clear();
+				return;
+			}
+		}
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
@@ -132,5 +138,10 @@ public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 	@Override
 	public boolean skipParent() {
 		return shouldSkipParent;
+	}
+	
+	@Override
+	public void clear() {
+		styles.clear();
 	}
 }
