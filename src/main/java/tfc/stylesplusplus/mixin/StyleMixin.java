@@ -61,6 +61,7 @@ public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 		for (Formatting formatting : formattings) {
 			if (formatting == Formatting.RESET) {
 				((ExtraStyleData)cir.getReturnValue()).clear();
+				hasReset = true;
 				return;
 			}
 		}
@@ -148,7 +149,7 @@ public class StyleMixin implements ExtraStyleData, StyleColorSettingHack {
 	
 	@Inject(at = @At("RETURN"), method = "withParent")
 	public void copyFormattingParent(Style parent, CallbackInfoReturnable<Style> cir) {
-		if (((ExtraStyleData)cir.getReturnValue()).skipParent()) {
+		if (((ExtraStyleData)cir.getReturnValue()).skipParent() || hasReset) {
 			((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
 //			((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 			return;
