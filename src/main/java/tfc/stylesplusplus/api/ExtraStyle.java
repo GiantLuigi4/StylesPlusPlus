@@ -37,4 +37,10 @@ public abstract class ExtraStyle {
 		copy.deserialize(serialize());
 		return copy;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!obj.getClass().equals(this.getClass())) return false;
+		return serialize().equals(((ExtraStyle) obj).serialize());
+	}
 }

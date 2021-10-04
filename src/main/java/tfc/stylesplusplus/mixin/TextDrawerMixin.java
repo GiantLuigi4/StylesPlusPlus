@@ -76,10 +76,10 @@ public class TextDrawerMixin implements StringAware {
 		srcColor = color;
 		if (srcTextColor != null) {
 			int k = srcTextColor.getRgb();
-			int m = (int) ((k >> 16 & (LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE | 15)));
-			int n = (int)((k >> 8 & (LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE | 15)));
-			int o = (int)((k & (LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE | 15)));
-			color = new Color((int) (m * 255), (int) (n * 255), (int) (o * 255), (int) (alpha * 255));
+			int m = ((k >> 16 & (LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE | 15)));
+			int n = ((k >> 8 & (LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE | 15)));
+			int o = ((k & (LightmapTextureManager.MAX_BLOCK_LIGHT_COORDINATE | 15)));
+			color = new Color(m, n, o, (int) (alpha * 255));
 		}
 		for (ExtraStyle extraStyle : ((ExtraStyleData) style).getExtraStyles())
 			color = extraStyle.modifyColor(color, i, text.length(), (char) j, text, style, brightnessMultiplier);

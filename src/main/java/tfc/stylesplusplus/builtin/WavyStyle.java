@@ -67,7 +67,7 @@ public class WavyStyle extends ExtraStyle {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		WavyStyle wavyStyle = (WavyStyle) o;
-		return tickStart == wavyStyle.tickStart && Double.compare(wavyStyle.sclX, sclX) == 0 && Double.compare(wavyStyle.sclY, sclY) == 0 && Double.compare(wavyStyle.speedX, speedX) == 0 && Double.compare(wavyStyle.speedY, speedY) == 0 && Double.compare(wavyStyle.offX, offX) == 0 && Double.compare(wavyStyle.offY, offY) == 0 && Double.compare(wavyStyle.indexMultiplierX, indexMultiplierX) == 0 && Double.compare(wavyStyle.indexMultiplierY, indexMultiplierY) == 0 && globalTime == wavyStyle.globalTime;
+		return Double.compare(wavyStyle.sclX, sclX) == 0 && Double.compare(wavyStyle.sclY, sclY) == 0 && Double.compare(wavyStyle.speedX, speedX) == 0 && Double.compare(wavyStyle.speedY, speedY) == 0 && Double.compare(wavyStyle.offX, offX) == 0 && Double.compare(wavyStyle.offY, offY) == 0 && Double.compare(wavyStyle.indexMultiplierX, indexMultiplierX) == 0 && Double.compare(wavyStyle.indexMultiplierY, indexMultiplierY) == 0 && globalTime == wavyStyle.globalTime;
 	}
 	
 	@Override
