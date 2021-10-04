@@ -10,7 +10,6 @@
     "TextDrawerMixin",
     "TextVisitFactoryMixin",
     "MinecraftMixin",
-//    "testing.WorldMixin",
     "StyleMixin"
   ],
   "injectors": {
