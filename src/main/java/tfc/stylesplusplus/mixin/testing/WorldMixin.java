@@ -4,6 +4,7 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,10 +30,15 @@ public abstract class WorldMixin {
 	@Inject(at = @At("HEAD"), method = "tick")
 	public void onTick(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
 		Style style = Style.EMPTY.withBold(false);
-		WavyStyle wavyStyle = new WavyStyle(1, 1, 3, 1, 0, 0.5, 0, 0);
+		LiteralText text = new LiteralText("");
+		WavyStyle wavyStyle = new WavyStyle(1, 1, 3, 1, 0, 0.5, 12, 12);
+		wavyStyle.globalTime = true;
 		((ExtraStyleData) style).addStyle(wavyStyle);
 		for (AbstractClientPlayerEntity player : players) {
-			player.sendMessage(new LiteralText("aaaaaaaaaaaaaaaaaaaa").setStyle(style), true);
+			Text text1 = new LiteralText("aaaaaaaaaaaaaaaaaaaa").setStyle(style);
+			text.append(text1);
+			text.append(new LiteralText("b"));
+			player.sendMessage(text, true);
 		}
 	}
 }

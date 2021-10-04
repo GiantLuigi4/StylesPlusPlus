@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfc.stylesplusplus.api.ExtraStyle;
 import tfc.stylesplusplus.api.ExtraStyleData;
 import tfc.stylesplusplus.api.StyleColorSettingHack;
+import tfc.stylesplusplus.util.StyleMixinHelper;
 
 import java.util.ArrayList;
 
@@ -57,8 +58,6 @@ public abstract class StyleMixin implements ExtraStyleData, StyleColorSettingHac
 			((ExtraStyleData)cir.getReturnValue()).clear();
 			hasReset = true;
 		}
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withFormatting([Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;")
@@ -71,105 +70,82 @@ public abstract class StyleMixin implements ExtraStyleData, StyleColorSettingHac
 			}
 		}
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withBold")
 	public void copyFormattingBold(Boolean bold, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withItalic")
 	public void copyFormattingItalic(Boolean bold, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withUnderline")
 	public void copyFormattingUnderline(Boolean bold, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "obfuscated")
 	public void copyFormattingObfuscated(Boolean bold, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withStrikethrough")
 	public void copyFormattingStrikethrough(Boolean bold, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withClickEvent")
 	public void copyFormattingClickEvent(ClickEvent clickEvent, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withHoverEvent")
 	public void copyFormattingHoverEvent(HoverEvent hoverEvent, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withInsertion")
 	public void copyFormattingInsertion(String insertion, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withFont")
 	public void copyFormattingFont(Identifier font, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withExclusiveFormatting")
 	public void copyFormattingExclusive(Formatting formatting, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withColor(Lnet/minecraft/text/TextColor;)Lnet/minecraft/text/Style;")
 	public void copyFormattingColor(TextColor color, CallbackInfoReturnable<Style> cir) {
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withParent", cancellable = true)
 	public void copyFormattingParent(Style parent, CallbackInfoReturnable<Style> cir) {
-		if (cir.getReturnValue() == (Object)this) cir.setReturnValue(this.withBold(this.isBold()));
-		if (((ExtraStyleData)cir.getReturnValue()).skipParent() || hasReset) {
-			((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//			((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
-			return;
-		}
-		if (((ExtraStyleData) cir.getReturnValue()).getExtraStyles() != styles) {
-			if (((ExtraStyleData) cir.getReturnValue()).getExtraStyles() != ((ExtraStyleData) parent).getExtraStyles()) {
-				for (ExtraStyle style : styles)
-					((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-				for (ExtraStyle style : ((ExtraStyleData) parent).getExtraStyles())
-					((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
+		StyleMixinHelper.copyFormattingParent((Style)(Object)this, styles, hasReset, skipParent(), parent, cir);
+	}
+	
+	@Inject(at = @At("RETURN"), method = "equals", cancellable = true)
+	public void postCheckEqual(Object object, CallbackInfoReturnable<Boolean> cir) {
+		if (object instanceof ExtraStyleData other) {
+			if (other.getExtraStyles().size() != styles.size()) {
+				cir.setReturnValue(false);
+				return;
+			}
+			for (int i = 0; i < other.getExtraStyles().size(); i++) {
+				ExtraStyle style = other.getExtraStyles().get(i);
+				if (!style.equals(styles.get(i))) {
+					cir.setReturnValue(false);
+				}
 			}
 		}
-		((ExtraStyleData) cir.getReturnValue()).setSkipParent(skipParent());
-//		((ExtraStyleData) cir.getReturnValue()).setHasReset(hasReset);
 	}
 	
 	@Override

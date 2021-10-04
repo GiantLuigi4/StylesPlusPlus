@@ -10,6 +10,8 @@ import tfc.stylesplusplus.api.Color;
 import tfc.stylesplusplus.api.ExtraStyle;
 import tfc.stylesplusplus.api.util.GeneralUtils;
 
+import java.util.Objects;
+
 public class WavyStyle extends ExtraStyle {
 	public WavyStyle() {
 		super(new Identifier("stylesplusplus:wavy"));
@@ -47,7 +49,7 @@ public class WavyStyle extends ExtraStyle {
 	private double offY;
 	private double indexMultiplierX;
 	private double indexMultiplierY;
-	private boolean globalTime = false;
+	public boolean globalTime = false;
 	
 	@Override
 	public JsonObject serialize() {
@@ -58,6 +60,19 @@ public class WavyStyle extends ExtraStyle {
 		object.addProperty("globalTime", globalTime);
 		
 		return object;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		WavyStyle wavyStyle = (WavyStyle) o;
+		return tickStart == wavyStyle.tickStart && Double.compare(wavyStyle.sclX, sclX) == 0 && Double.compare(wavyStyle.sclY, sclY) == 0 && Double.compare(wavyStyle.speedX, speedX) == 0 && Double.compare(wavyStyle.speedY, speedY) == 0 && Double.compare(wavyStyle.offX, offX) == 0 && Double.compare(wavyStyle.offY, offY) == 0 && Double.compare(wavyStyle.indexMultiplierX, indexMultiplierX) == 0 && Double.compare(wavyStyle.indexMultiplierY, indexMultiplierY) == 0 && globalTime == wavyStyle.globalTime;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(tickStart, sclX, sclY, speedX, speedY, offX, offY, indexMultiplierX, indexMultiplierY, globalTime);
 	}
 	
 	@Override
