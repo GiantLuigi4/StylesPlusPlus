@@ -52,9 +52,10 @@ public abstract class StyleMixin implements ExtraStyleData, StyleColorSettingHac
 	
 	@Inject(at = @At("RETURN"), method = "withFormatting(Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;")
 	public void copyFormatting(Formatting formatting, CallbackInfoReturnable<Style> cir) {
-		if (formatting != Formatting.RESET)
+		if (formatting != Formatting.RESET) {
+			if (cir.getReturnValue() == (Object)this) return;
 			for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
-		else {
+		} else {
 			((ExtraStyleData)cir.getReturnValue()).clear();
 			hasReset = true;
 		}
@@ -69,61 +70,73 @@ public abstract class StyleMixin implements ExtraStyleData, StyleColorSettingHac
 				return;
 			}
 		}
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withBold")
 	public void copyFormattingBold(Boolean bold, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withItalic")
 	public void copyFormattingItalic(Boolean bold, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withUnderline")
 	public void copyFormattingUnderline(Boolean bold, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "obfuscated")
 	public void copyFormattingObfuscated(Boolean bold, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withStrikethrough")
 	public void copyFormattingStrikethrough(Boolean bold, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withClickEvent")
 	public void copyFormattingClickEvent(ClickEvent clickEvent, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withHoverEvent")
 	public void copyFormattingHoverEvent(HoverEvent hoverEvent, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withInsertion")
 	public void copyFormattingInsertion(String insertion, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withFont")
 	public void copyFormattingFont(Identifier font, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withExclusiveFormatting")
 	public void copyFormattingExclusive(Formatting formatting, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	
 	@Inject(at = @At("RETURN"), method = "withColor(Lnet/minecraft/text/TextColor;)Lnet/minecraft/text/Style;")
 	public void copyFormattingColor(TextColor color, CallbackInfoReturnable<Style> cir) {
+		if (cir.getReturnValue() == (Object)this) return;
 		for (ExtraStyle style : styles) ((ExtraStyleData) cir.getReturnValue()).addStyle(style.copy());
 	}
 	

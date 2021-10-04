@@ -15,6 +15,7 @@ public class StyleMixinHelper {
 		) {
 			cir.setReturnValue(current.withBold(parent.isBold()));
 		} else if (parent == Style.EMPTY) return;
+		if (cir.getReturnValue() == current) return;
 		if (((ExtraStyleData) cir.getReturnValue()).getExtraStyles() != styles) {
 			if (((ExtraStyleData) cir.getReturnValue()).getExtraStyles() != ((ExtraStyleData) parent).getExtraStyles()) {
 				for (ExtraStyle style : styles)
