@@ -7,10 +7,10 @@
     "SerializerMixin"
   ],
   "client": [
-    "TextDrawerMixin",
-    "TextVisitFactoryMixin",
     "MinecraftMixin",
-    "StyleMixin"
+    "StyleMixin",
+    "TextDrawerMixin",
+    "TextVisitFactoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

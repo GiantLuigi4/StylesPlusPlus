@@ -3,6 +3,7 @@ package tfc.stylesplusplus.builtin;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix4f;
@@ -132,14 +133,16 @@ public class WavyStyle extends ExtraStyle {
 	}
 	
 	public Color modifyColor(Color color, int index, int count, char c, String str, Style fullStyle, float brightnessMultiplier) {
-		return color;
-//		double tick = GeneralUtils.getTime() - (globalTime ? 0 : tickStart);
-//		tick = tick / 10d;
-//		double v = Math.cos(tick) + 1;
-//		v /= 2;
-//		if (((int) (v * count)) == index) {
-//			return new Color((int)(255 * brightnessMultiplier), 0, 0, (int)((tick*10) % 255 * (color.getAlpha() / 255f)));
-//		}
-//		return new Color((int)(255 * brightnessMultiplier), (int)(255 * brightnessMultiplier), (int)(255 * brightnessMultiplier), color.getAlpha());
+		if (!FabricLoader.getInstance().isDevelopmentEnvironment()) return color;
+		
+		// for debug purposes, this is very useful
+		double tick = GeneralUtils.getTime() - (globalTime ? 0 : tickStart);
+		tick = tick / 10d;
+		double v = Math.cos(tick) + 1;
+		v /= 2;
+		if (((int) (v * count)) == index) {
+			return new Color((int)(255 * brightnessMultiplier), 0, 0, (int)((tick*10) % 255 * (color.getAlpha() / 255f)));
+		}
+		return new Color((int)(255 * brightnessMultiplier), (int)(255 * brightnessMultiplier), (int)(255 * brightnessMultiplier), color.getAlpha());
 	}
 }
