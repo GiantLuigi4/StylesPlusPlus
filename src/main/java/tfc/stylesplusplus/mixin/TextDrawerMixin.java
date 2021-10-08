@@ -83,6 +83,12 @@ public class TextDrawerMixin implements StringAware {
 		}
 		for (ExtraStyle extraStyle : ((ExtraStyleData) style).getExtraStyles())
 			color = extraStyle.modifyColor(color, i, text.length(), (char) j, text, style, brightnessMultiplier);
+		color = new Color(
+				(int) (color.getRed() * brightnessMultiplier),
+				(int) (color.getGreen() * brightnessMultiplier),
+				(int) (color.getBlue() * brightnessMultiplier),
+				color.getAlpha()
+		);
 		red = color.getRed() / 255f;
 		green = color.getGreen() / 255f;
 		blue = color.getBlue() / 255f;
